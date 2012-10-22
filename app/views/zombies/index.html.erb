@@ -2,6 +2,6 @@
 
 <ul>
   <%- @zombies.each do |zombie| %>
-    <li><%= zombie.name %></li>
+    <li><%= link_to zombie.name, zombie %></li>
   <% end %> 
 </ul>

@@ -8,6 +8,10 @@ class ZombiesController < ApplicationController
     redirect_to zombies_path, :notice=> "Added Zombie"
   end
 
+  def show
+    @zombie = Zombie.find(params[:id])
+  end
+
   def index
     @zombies = Zombie.order(:name)
   end
