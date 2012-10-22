@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Zombie do
+
   it "should have a name" do
     subject.name = "Ash"
     subject.name.should == "Ash"
