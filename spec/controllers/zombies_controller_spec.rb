@@ -21,6 +21,26 @@ describe ZombiesController do
       flash[:notice].should == "Added Zombie" 
     end
   end
+  
+    
+  describe "#update" do
+  
+     before do
+      @zombie1 = Zombie.create(:name => "Ash", :graveyard=>"Sleepy Hollow")
+    end
+  
+    it "should update a zombie" do
+      put :update, :id=>@zombie1.id, :zombie=>{:name=>"Ash II", :graveyard=>"New Sleppy Hollow"}
+      response.should redirect_to zombies_path
+      flash[:notice].should == "Updated zombie Ash II"
+      zombieAfterUpdate = Zombie.find(@zombie1.id)
+      zombieAfterUpdate.graveyard.should == "New Sleppy Hollow"
+      zombieAfterUpdate.name.should == "Ash II"
+      
+    end
+    
+  end
+  
 
   describe "#index" do
     before do
