@@ -7,8 +7,8 @@ describe Zombie do
   end
 
   it "should have a graveyard" do
-    subject.name = "Creepy Hollow"
-    subject.name.should == "Creepy Hollow"
+    subject.graveyard = "Creepy Hollow"
+    subject.graveyard.should == "Creepy Hollow"
   end
 
   it "should validate that the name is present" do
