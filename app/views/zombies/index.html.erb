@@ -2,6 +2,6 @@
 
 <ul>
   <%- @zombies.each do |zombie| %>
-    <li><%= zombie.name %></li>
+    <li><%= zombie.name %> - <%= link_to "Delete", zombie_path(zombie), :method=>:delete, :confirm => "Are you sure?", :id => "delete_"+zombie.id.to_s %></li>
   <% end %> 
 </ul>

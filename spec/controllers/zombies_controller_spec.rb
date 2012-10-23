@@ -33,4 +33,17 @@ describe ZombiesController do
       assigns[:zombies].should == [@zombie1, @zombie2] 
     end 
   end
+
+  describe "#delete" do
+    before do
+      @zombie1 = Zombie.create(:name => "Ash")
+      @zombie2 = Zombie.create(:name => "Sarah")
+      @count = Zombie.count  
+    end
+    it "should delete a named zombies" do
+      delete :destroy, :id=>@zombie1.id
+      Zombie.count.should == @count-1
+      Zombie.all == [@zombie2] 
+    end 
+  end
 end
