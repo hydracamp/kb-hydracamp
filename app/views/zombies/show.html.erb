@@ -1,0 +1,12 @@
+<h1><%= @zombie.name %> </h1>
+<%= form_for @tweet do |f| %>
+  <%= f.label :message %>
+  <%= f.text_field :message %>
+  <%= f.hidden_field :zombie_id %>
+  <%= f.submit %>
+<% end %>
+<ul>
+  <%- @zombie.tweets.order("created_at desc").each do |tweet| %>
+    <li><%= tweet.message %> at <%= tweet.created_at %></li>
+  <% end %>
+</ul>

@@ -12,7 +12,6 @@ describe "Zombies" do
       page.should have_content "Ash"
   end
   
-  
   context "when there is one zombie" do
     before do
      @zombie = Zombie.create!({:name=> "Andreas", :graveyard=> "KB"})  
@@ -37,8 +36,21 @@ describe "Zombies" do
   	end
   end 
   
+	context "creating tweets" do
+		before do
+			@zombie = Zombie.create(:name=>"Bones", :graveyard=>"SB")
+		end
 
-  
-  
+		it "should create tweets" do
+			#Given I am viewing the list of tweets for a zombie
+			visit zombie_path @zombie
+			#When I fill in the message of "This is my tweet"
+			fill_in "Message", :with => 'This is my Tweet'
+			#And I click "Create Tweet"
+			click_button "Create Tweet"
+			#Then I should return to the list of tweets for the zombie
+			#And I should see "This is my tweet" at the top of the list of tweets
+			page.should have_selector "ul li:first", :text=>'This is my Tweet'
+		end
+	end
 end
-
